@@ -1,0 +1,278 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.260382,37.869147 ]
+    },
+    "properties": {
+    "Name":"Pledge crossing for Zeta Phi Beta",
+    "Date":"2025-11-26",
+    "SoundIntensity":69,
+    "Filename":"Zellerbach.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.258405,37.871408 ]
+    },
+    "properties": {
+    "Name":"Wind blowing",
+    "Date":"2025-12-13",
+    "SoundIntensity":41,
+    "Filename":"Wind blowing outside of i school copy.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.262238,37.873056 ]
+    },
+    "properties": {
+    "Name":"Leaves crunching",
+    "Date":"2025-12-02",
+    "SoundIntensity":40,
+    "Filename":"Anthropology and Art Practice Building.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.257173,37.872764 ]
+    },
+    "properties": {
+    "Name":"Campanile serenade",
+    "Date":"2025-12-13",
+    "SoundIntensity":72,
+    "Filename":"Campinlele outside physics building.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.262348,37.871469 ]
+    },
+    "properties": {
+    "Name":"Clapping at CS189 lecture",
+    "Date":"2025-12-12",
+    "SoundIntensity":75,
+    "Filename":"Clapping.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.266357,37.873653 ]
+    },
+    "properties": {
+    "Name":"Conversations and an afterparty",
+    "Date":"2025-12-13",
+    "SoundIntensity":61,
+    "Filename":"Conversations on Hearst.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.258206,37.867651 ]
+    },
+    "properties": {
+    "Name":"Downstairs at Taphaus",
+    "Date":"2025-12-12",
+    "SoundIntensity":77,
+    "Filename":"Downstairs taphaus.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.26831,37.855705 ]
+    },
+    "properties": {
+    "Name":"Eli's Mile High Club",
+    "Date":"2025-12-13",
+    "SoundIntensity":81,
+    "Filename":"Eli's Mile High Club.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.258692,37.867269 ]
+    },
+    "properties": {
+    "Name":"Girls bathroom conversations",
+    "Date":"2025-12-12",
+    "SoundIntensity":58,
+    "Filename":"Girls bathroom.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.259523,37.873886 ]
+    },
+    "properties": {
+    "Name":"GeogC183 lecture",
+    "Date":"2025-12-13",
+    "SoundIntensity":46,
+    "Filename":"In Geogc183 lecture.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.258874,37.866237 ]
+    },
+    "properties": {
+    "Name":"Inside Raleigh's",
+    "Date":"2025-12-13",
+    "SoundIntensity":67,
+    "Filename":"Inside Raleigh's.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.258016,37.870115 ]
+    },
+    "properties": {
+    "Name":"Sleep lecture",
+    "Date":"2025-12-13",
+    "SoundIntensity":55,
+    "Filename":"Lecture.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.257286,37.873254 ]
+    },
+    "properties": {
+    "Name":"Loud cart",
+    "Date":"2025-12-13",
+    "SoundIntensity":54,
+    "Filename":"Loud cart.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.25999,37.871985 ]
+    },
+    "properties": {
+    "Name":"Conversation with Julia",
+    "Date":"2025-12-12",
+    "SoundIntensity":62,
+    "Filename":"Me n julia walking.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.259395,37.873179 ]
+    },
+    "properties": {
+    "Name":"Plans over music",
+    "Date":"2025-11-26",
+    "SoundIntensity":65,
+    "Filename":"Music convo .m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.254239,37.87368 ]
+    },
+    "properties": {
+    "Name":"The Greek",
+    "Date":"2025-12-13",
+    "SoundIntensity":89,
+    "Filename":"Oakland Arena copy.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.267361,37.863962 ]
+    },
+    "properties": {
+    "Name":"Party bus",
+    "Date":"2025-12-13",
+    "SoundIntensity":76,
+    "Filename":"On route to SF  copy.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.249693,37.867958 ]
+    },
+    "properties": {
+    "Name":"3am conversation at Plum House",
+    "Date":"2025-12-12",
+    "SoundIntensity":57,
+    "Filename":"Plum deep convo.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 37.872382,37.872382 ]
+    },
+    "properties": {
+    "Name":"Poetry on diaspora",
+    "Date":"2025-12-12",
+    "SoundIntensity":59,
+    "Filename":"Poem.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -122.257383,37.875086 ]
+    },
+    "properties": {
+    "Name":"White noise in Cory",
+    "Date":"2025-12-13",
+    "SoundIntensity":36,
+    "Filename":"White noise in Stacks.m4a"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 122.25859,37.865514 ]
+    },
+    "properties": {
+    "Name":"Dog singing along on Telegraph",
+    "Date":"2025-12-13",
+    "SoundIntensity":61,
+    "Filename":"dog.m4a"
+    }
+  }
+]
+}

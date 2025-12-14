@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Map Data Collection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #f3f4f6;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { font-size: 28px; color: #111827; margin-bottom: 8px; }
+        .subtitle { color: #6b7280; margin-bottom: 24px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        .card { background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 24px; }
+        .card h2 { font-size: 20px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .form-group { margin-bottom: 16px; }
+        label { display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 4px; }
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        input[type="text"]:read-only { background: #f9fafb; }
+        input[type="file"] { padding: 8px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-primary { background: #2563eb; color: white; width: 100%; }
+        .btn-primary:hover:not(:disabled) { background: #1d4ed8; }
+        .btn-primary:disabled { background: #d1d5db; cursor: not-allowed; }
+        .btn-success { background: #16a34a; color: white; }
+        .btn-success:hover:not(:disabled) { background: #15803d; }
+        .btn-purple { background: #9333ea; color: white; }
+        .btn-purple:hover:not(:disabled) { background: #7e22ce; }
+        .btn-danger { background: transparent; color: #dc2626; padding: 4px; }
+        .btn-danger:hover { color: #991b1b; }
+        #map {
+            width: 100%;
+            height: 400px;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+            position: relative;
+        }
+        .map-marker {
+            color: #dc2626;
+        }
+        .map-label {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(255,255,255,0.75);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #6b7280;
+        }
+        .header-actions { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .button-group { display: flex; gap: 8px; }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        thead { background: #f9fafb; }
+        th { padding: 12px 16px; text-align: left; font-weight: 500; color: #374151; }
+        td { padding: 12px 16px; border-top: 1px solid #e5e7eb; }
+        .empty-state { text-align: center; padding: 48px; color: #6b7280; }
+        .icon { width: 20px; height: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sound Map Data Collection</h1>
+        <p class="subtitle">Upload recordings, click map to set location, then add to collection</p>
+
+        <div class="grid">
+            <div class="card">
+                <h2>
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                    </svg>
+                    Current Recording
+                </h2>
+
+                <div class="form-group">
+                    <input type="file" id="fileInput" accept="audio/*">
+                </div>
+
+                <div id="recordingForm" style="display: none;">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="recordingName">
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="text" id="recordingDate" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Decibels (RMS)</label>
+                            <input type="text" id="recordingDB" readonly>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Latitude</label>
+                            <input type="text" id="recordingLat" readonly placeholder="Click map">
+                        </div>
+                        <div class="form-group">
+                            <label>Longitude</label>
+                            <input type="text" id="recordingLng" readonly placeholder="Click map">
+                        </div>
+                    </div>
+
+                    <button class="btn-primary" id="addBtn">Add to Collection</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    Click to Set Location
+                </h2>
+                <div id="map"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="header-actions">
+                <h2>
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+                    </svg>
+                    Recordings (<span id="recordingCount">0</span>)
+                </h2>
+                <div class="button-group">
+                    <button class="btn-success" id="downloadCSV" disabled>
+                        <svg class="icon" style="display:inline;vertical-align:middle;margin-right:4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                        CSV
+                    </button>
+                    <button class="btn-purple" id="downloadGeoJSON" disabled>
+                        <svg class="icon" style="display:inline;vertical-align:middle;margin-right:4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                        GeoJSON
+                    </button>
+                </div>
+            </div>
+
+            <div id="recordingsList"></div>
+        </div>
+    </div>
+
+    <script>
+        const recordings = [];
+        let currentRecording = {};
+        let mapMarker = null;
+
+        // Initialize Leaflet map
+        const mapInstance = L.map('map').setView([37.8715, -122.2727], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(mapInstance);
+
+        const fileInput = document.getElementById('fileInput');
+        const recordingForm = document.getElementById('recordingForm');
+        const addBtn = document.getElementById('addBtn');
+
+        async function analyzeAudio(file) {
+            return new Promise((resolve) => {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const reader = new FileReader();
+
+                reader.onload = async (e) => {
+                    try {
+                        const arrayBuffer = e.target.result;
+                        const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+
+                        const channelData = audioBuffer.getChannelData(0);
+                        let sum = 0;
+                        let peak = 0;
+
+                        for (let i = 0; i < channelData.length; i++) {
+                            const abs = Math.abs(channelData[i]);
+                            sum += abs * abs;
+                            if (abs > peak) peak = abs;
+                        }
+
+                        const rms = Math.sqrt(sum / channelData.length);
+                        const dbRMS = 20 * Math.log10(rms);
+                        const dbPeak = 20 * Math.log10(peak);
+
+                        resolve({ rms: dbRMS.toFixed(1), peak: dbPeak.toFixed(1) });
+                    } catch (error) {
+                        resolve({ rms: 'N/A', peak: 'N/A' });
+                    }
+                };
+
+                reader.readAsArrayBuffer(file);
+            });
+        }
+
+        fileInput.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const decibels = await analyzeAudio(file);
+            const date = new Date(file.lastModified).toISOString().split('T')[0];
+            const name = file.name.replace(/\.[^/.]+$/, '');
+
+            currentRecording = {
+                file: file,
+                fileName: file.name,
+                name: name,
+                date: date,
+                decibels: decibels,
+                lat: null,
+                lng: null
+            };
+
+            document.getElementById('recordingName').value = name;
+            document.getElementById('recordingDate').value = date;
+            document.getElementById('recordingDB').value = decibels.rms;
+            document.getElementById('recordingLat').value = '';
+            document.getElementById('recordingLng').value = '';
+
+            recordingForm.style.display = 'block';
+            if (mapMarker) {
+                mapInstance.removeLayer(mapMarker);
+                mapMarker = null;
+            }
+        });
+
+        mapInstance.on('click', (e) => {
+            const lat = e.latlng.lat.toFixed(6);
+            const lng = e.latlng.lng.toFixed(6);
+
+            currentRecording.lat = lat;
+            currentRecording.lng = lng;
+
+            document.getElementById('recordingLat').value = currentRecording.lat;
+            document.getElementById('recordingLng').value = currentRecording.lng;
+
+            if (mapMarker) mapInstance.removeLayer(mapMarker);
+            mapMarker = L.marker([lat, lng]).addTo(mapInstance);
+        });
+
+        addBtn.addEventListener('click', () => {
+            if (!currentRecording.file || !currentRecording.lat || !currentRecording.lng) {
+                alert('Please upload a file and select a location on the map');
+                return;
+            }
+
+            currentRecording.name = document.getElementById('recordingName').value;
+            recordings.push({ ...currentRecording, id: Date.now() });
+
+            currentRecording = {};
+            fileInput.value = '';
+            recordingForm.style.display = 'none';
+            if (mapMarker) {
+                mapInstance.removeLayer(mapMarker);
+                mapMarker = null;
+            }
+
+            updateRecordingsList();
+        });
+
+        function updateRecordingsList() {
+            const count = document.getElementById('recordingCount');
+            const list = document.getElementById('recordingsList');
+            const csvBtn = document.getElementById('downloadCSV');
+            const geoBtn = document.getElementById('downloadGeoJSON');
+
+            count.textContent = recordings.length;
+
+            if (recordings.length === 0) {
+                list.innerHTML = '<div class="empty-state">No recordings added yet</div>';
+                csvBtn.disabled = true;
+                geoBtn.disabled = true;
+            } else {
+                csvBtn.disabled = false;
+                geoBtn.disabled = false;
+
+                let html = '<table><thead><tr>';
+                html += '<th>Name</th><th>Date</th><th>Lat</th><th>Lng</th>';
+                html += '<th>dB (RMS)</th><th>dB (Peak)</th><th>File</th><th></th>';
+                html += '</tr></thead><tbody>';
+
+                recordings.forEach(r => {
+                    html += `<tr>
+                        <td>${r.name}</td>
+                        <td>${r.date}</td>
+                        <td>${r.lat}</td>
+                        <td>${r.lng}</td>
+                        <td>${r.decibels.rms}</td>
+                        <td>${r.decibels.peak}</td>
+                        <td style="font-size:12px;color:#6b7280;">${r.fileName}</td>
+                        <td><button class="btn-danger" onclick="deleteRecording(${r.id})">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                            </svg>
+                        </button></td>
+                    </tr>`;
+                });
+
+                html += '</tbody></table>';
+                list.innerHTML = html;
+            }
+        }
+
+        function deleteRecording(id) {
+            const index = recordings.findIndex(r => r.id === id);
+            if (index > -1) {
+                recordings.splice(index, 1);
+                updateRecordingsList();
+            }
+        }
+
+        document.getElementById('downloadCSV').addEventListener('click', () => {
+            const headers = ['Name', 'Date', 'Latitude', 'Longitude', 'Decibels_RMS', 'Decibels_Peak', 'Filename'];
+            const rows = recordings.map(r => [
+                r.name, r.date, r.lat, r.lng, r.decibels.rms, r.decibels.peak, r.fileName
+            ]);
+
+            const csv = [headers, ...rows].map(row => row.join(',')).join('\n');
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'sound-map-data.csv';
+            a.click();
+        });
+
+        document.getElementById('downloadGeoJSON').addEventListener('click', () => {
+            const geojson = {
+                type: 'FeatureCollection',
+                features: recordings.map(r => ({
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [parseFloat(r.lng), parseFloat(r.lat)]
+                    },
+                    properties: {
+                        name: r.name,
+                        date: r.date,
+                        decibels_rms: r.decibels.rms,
+                        decibels_peak: r.decibels.peak,
+                        filename: r.fileName
+                    }
+                }))
+            };
+
+            const blob = new Blob([JSON.stringify(geojson, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'sound-map-data.geojson';
+            a.click();
+        });
+
+        updateRecordingsList();
+    </script>
+</body>
+</html>
