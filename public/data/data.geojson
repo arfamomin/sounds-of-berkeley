@@ -22,7 +22,7 @@
     },
     "properties": {
     "Name":"Wind blowing",
-    "Date":"2025-12-13",
+    "Date":"2025-12-04",
     "SoundIntensity":41,
     "Filename":"Wind blowing outside of i school copy.m4a"
     }
@@ -48,7 +48,7 @@
     },
     "properties": {
     "Name":"Campanile serenade",
-    "Date":"2025-12-13",
+    "Date":"2025-11-20",
     "SoundIntensity":72,
     "Filename":"Campinlele outside physics building.m4a"
     }
@@ -60,8 +60,8 @@
        "coordinates":  [ -122.262348,37.871469 ]
     },
     "properties": {
-    "Name":"Clapping at CS189 lecture",
-    "Date":"2025-12-12",
+    "Name":"Clapping at final CS189 lecture",
+    "Date":"2025-12-04",
     "SoundIntensity":75,
     "Filename":"Clapping.m4a"
     }
@@ -74,7 +74,7 @@
     },
     "properties": {
     "Name":"Conversations and an afterparty",
-    "Date":"2025-12-13",
+    "Date":"2025-12-05",
     "SoundIntensity":61,
     "Filename":"Conversations on Hearst.m4a"
     }
@@ -87,7 +87,7 @@
     },
     "properties": {
     "Name":"Downstairs at Taphaus",
-    "Date":"2025-12-12",
+    "Date":"2025-12-04",
     "SoundIntensity":77,
     "Filename":"Downstairs taphaus.m4a"
     }
@@ -96,11 +96,11 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ -122.26831,37.855705 ]
+       "coordinates":  [-122.26968960000002, 37.82593156606971]
     },
     "properties": {
     "Name":"Eli's Mile High Club",
-    "Date":"2025-12-13",
+    "Date":"2025-11-24",
     "SoundIntensity":81,
     "Filename":"Eli's Mile High Club.m4a"
     }
@@ -113,7 +113,7 @@
     },
     "properties": {
     "Name":"Girls bathroom conversations",
-    "Date":"2025-12-12",
+    "Date":"2025-12-04",
     "SoundIntensity":58,
     "Filename":"Girls bathroom.m4a"
     }
@@ -126,7 +126,7 @@
     },
     "properties": {
     "Name":"GeogC183 lecture",
-    "Date":"2025-12-13",
+    "Date":"2025-12-02",
     "SoundIntensity":46,
     "Filename":"In Geogc183 lecture.m4a"
     }
@@ -139,7 +139,7 @@
     },
     "properties": {
     "Name":"Inside Raleigh's",
-    "Date":"2025-12-13",
+    "Date":"2025-12-02",
     "SoundIntensity":67,
     "Filename":"Inside Raleigh's.m4a"
     }
@@ -152,7 +152,7 @@
     },
     "properties": {
     "Name":"Sleep lecture",
-    "Date":"2025-12-13",
+    "Date":"2025-11-21",
     "SoundIntensity":55,
     "Filename":"Lecture.m4a"
     }
@@ -165,7 +165,7 @@
     },
     "properties": {
     "Name":"Loud cart",
-    "Date":"2025-12-13",
+    "Date":"2025-11-20",
     "SoundIntensity":54,
     "Filename":"Loud cart.m4a"
     }
@@ -178,7 +178,7 @@
     },
     "properties": {
     "Name":"Conversation with Julia",
-    "Date":"2025-12-12",
+    "Date":"2025-12-04",
     "SoundIntensity":62,
     "Filename":"Me n julia walking.m4a"
     }
@@ -216,8 +216,8 @@
        "coordinates":  [ -122.267361,37.863962 ]
     },
     "properties": {
-    "Name":"Party bus",
-    "Date":"2025-12-13",
+    "Name":"Party bus on route to San Francisco",
+    "Date":"2025-11-13",
     "SoundIntensity":76,
     "Filename":"On route to SF  copy.m4a"
     }
@@ -230,7 +230,7 @@
     },
     "properties": {
     "Name":"3am conversation at Plum House",
-    "Date":"2025-12-12",
+    "Date":"2025-12-11",
     "SoundIntensity":57,
     "Filename":"Plum deep convo.m4a"
     }
@@ -239,11 +239,11 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 37.872382,37.872382 ]
+       "coordinates":  [-122.2596102595832, 37.872389554727356 ]
     },
     "properties": {
     "Name":"Poetry on diaspora",
-    "Date":"2025-12-12",
+    "Date":"2025-12-04",
     "SoundIntensity":59,
     "Filename":"Poem.m4a"
     }
@@ -256,7 +256,7 @@
     },
     "properties": {
     "Name":"White noise in Cory",
-    "Date":"2025-12-13",
+    "Date":"2025-11-24",
     "SoundIntensity":36,
     "Filename":"White noise in Stacks.m4a"
     }
@@ -265,14 +265,105 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 122.25859,37.865514 ]
+       "coordinates":  [ -122.25859,37.865514 ]
     },
     "properties": {
-    "Name":"Dog singing along on Telegraph",
-    "Date":"2025-12-13",
+    "Name":"Dog singing along to harmonica on Telegraph",
+    "Date":"2025-11-19",
     "SoundIntensity":61,
     "Filename":"dog.m4a"
     }
+  },
+  {
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.265413, 37.873033]
+  },
+  "properties": {
+    "Name": "Typing up a laboratory report",
+    "Date": "2025-12-03",
+    "SoundIntensity": 32,
+    "Filename": "typing.m4a"
   }
+},
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.257139, 37.871553]
+  },
+  "properties": {
+    "Name": "Kneeled next to Strawberry Creek",
+    "Date": "2025-12-11",
+    "SoundIntensity": 58,
+    "Filename": "Strawberry.m4a"
+  }
+},
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.251398, 37.866812]
+  },
+  "properties": {
+    "Name": "Kitchen sounds after sorority dinner",
+    "Date": "2025-12-10",
+    "SoundIntensity": 52,
+    "Filename": "Kitchen.m4a"
+  }
+},
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.259414, 37.871925]
+  },
+  "properties": {
+    "Name": "Late night studying at Doe Library",
+    "Date": "2025-12-10",
+    "SoundIntensity": 52,
+    "Filename": "Doe.m4a"
+  }
+},
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.258341, 37.873877]
+  },
+  "properties": {
+    "Name": "Cigarettes and conversation as a study break",
+    "Date": "2025-12-10",
+    "SoundIntensity": 48,
+    "Filename": "Cigarette study break.m4a"
+  }
+},
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.268848, 37.866837]
+  },
+  "properties": {
+    "Name": "Traditional music at The Persian Center",
+    "Date": "2025-12-02",
+    "SoundIntensity": 69,
+    "Filename": "Persian center berkeley.m4a"
+  }
+},
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.26057000046265, 37.875228368201185]
+  },
+  "properties": {
+    "Name": "Stacks Magazine launch party at The Daily Californian office",
+    "Date": "2025-12-04",
+    "SoundIntensity": 69,
+    "Filename": "The Daily Californian Party.m4a"
+  }
+}
 ]
 }

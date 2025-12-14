@@ -68,8 +68,8 @@ function Map() {
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/arfamomin/cmj3fgcee00b901sndoav667d',
-      center: [-122.26, 37.8715],
-      zoom: 14.5,
+      center: [-122.258, 37.8715],
+      zoom: 15.5,
       attributionControl: false
     })
 
