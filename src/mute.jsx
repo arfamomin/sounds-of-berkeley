@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import React from 'react';
 
 export default function MuteButton() {
   const [isMuted, setIsMuted] = useState(true);

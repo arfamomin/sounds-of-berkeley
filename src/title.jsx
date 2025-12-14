@@ -1,5 +1,6 @@
 import './title.css'
 import { useEffect, useState, useRef } from 'react'
+import React from 'react';
 import { ConcentricCircle } from './components/ConcentricCircle.jsx'
 
 const MIN_DISTANCE = 125
