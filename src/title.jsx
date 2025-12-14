@@ -8,6 +8,15 @@ const FADE_STEP = 30
 const FADE_OUT_DURATION = 450
 const FADE_IN_DURATION = 350
 
+let __idCounter = 0
+function safeUUID() {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    return crypto.randomUUID()
+  }
+  __idCounter += 1
+  return `uid-${Date.now()}-${__idCounter}`
+}
+
 export default function TitlePage() {
 
   const [hasStarted, setHasStarted] = useState(false)
@@ -184,7 +193,7 @@ export default function TitlePage() {
       setCircles((prev) => [
         ...prev,
         {
-          id: crypto.randomUUID(),
+          id: safeUUID(),
           x: point.x,
           y: point.y,
           soundIntensity: feature.properties.SoundIntensity,
