@@ -1,0 +1,25 @@
+.story-container {
+  position: relative;
+  z-index: 10;
+}
+
+.story-step {
+  height: 100vh;
+}
+
+.story-box {
+  position: fixed;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 320px;
+  padding: 20px 24px;
+  background: rgba(15, 18, 25, 0.85);
+  color: white;
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  pointer-events: none;
+}
