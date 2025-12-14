@@ -79,7 +79,7 @@ function Map() {
 
     mapRef.current.on('load', async () => {
       try {
-        const response = await fetch('/data/data.geojson')
+        const response = await fetch(`${import.meta.env.BASE_URL}data/data.geojson`)
         const geojsonData = await response.json()
 
         geojsonData.features.forEach((feature) => {
@@ -137,7 +137,7 @@ function Map() {
 
             activeMarkerRef.current = markerDiv
 
-            audio.src = `/data/audio/${Filename}`
+            audio.src = `${import.meta.env.BASE_URL}data/audio/${Filename}`
             audio.currentTime = 0
 
             audio

@@ -50,7 +50,7 @@ export default function TitlePage() {
   useEffect(() => {
     if (!hasStarted) return
 
-    fetch('/data/data.geojson')
+    fetch(`${import.meta.env.BASE_URL}data/data.geojson`)
       .then((res) => res.json())
       .then((data) => setFeatures(data.features || []))
       .catch(console.error)
@@ -132,7 +132,7 @@ export default function TitlePage() {
     )
       return
 
-    fadeOutThenPlay(`/public/data/audio/${filename}`)
+    fadeOutThenPlay(`${import.meta.env.BASE_URL}data/audio/${filename}`)
   }
 
   // scroll to map

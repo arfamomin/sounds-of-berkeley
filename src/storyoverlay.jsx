@@ -67,7 +67,7 @@ export default function StoryOverlay({ mapRef, onFinish }) {
 
     audio.pause()
     audio.currentTime = 0
-    audio.src = `/data/audio/${chapter.sound}`
+    // audio.src = `/data/audio/${chapter.sound}`
     audio.volume = 0
     audio.play().catch(() => {})
 

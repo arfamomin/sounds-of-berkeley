@@ -9,6 +9,6 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
       <Title />
       <Map />
-      <MuteButton />
+      {/* <MuteButton /> */}
   </StrictMode>
 )
