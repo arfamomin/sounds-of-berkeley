@@ -364,6 +364,19 @@
     "SoundIntensity": 69,
     "Filename": "The Daily Californian Party.m4a"
   }
+},
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.25279559336852, 37.84559268532619]
+  },
+  "properties": {
+    "Name": "Grocery shopping at Trader Joe's",
+    "Date": "2025-12-02",
+    "SoundIntensity": 69,
+    "Filename": "Grocery shopping.m4a"
+  }
 }
 ]
 }

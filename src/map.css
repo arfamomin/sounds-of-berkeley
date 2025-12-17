@@ -83,3 +83,18 @@
   margin-top: 6px;
   font-size: .75rem;
 }
+
+
+/* Inset map container */
+#inset-map {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  width: 180px;
+  height: 180px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.35);
+  z-index: 2;
+  pointer-events: none; /* important: inset is purely visual */
+}
